@@ -1,0 +1,3 @@
+project_security:
+    resource: "@ApplicationInternitTituloBundle/Controller/"
+    type:     annotation

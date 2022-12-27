@@ -1,0 +1,97 @@
+{% extends "@ApplicationProjectContent/base/base_web.html.twig" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascriptsFooter %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container" style="margin-top: 2%">
+        <h2>{{ title }}</h2>
+
+        <a href="{{ path("web_dashboard") }}" class="btn btn-secondary" >
+            Voltar
+        </a>
+        <a href="{{ path('web_documentoAcademico_create') }}" class="btn btn-primary" >
+            Cadastrar
+        </a>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">titulo</th>
+                <th scope="col">subtitulo</th>
+                <th scope="col">resumo</th>
+                <th scope="col">dataDocumento</th>
+                <th scope="col">dataPublicacao</th>
+                <th scope="col">status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in objects %}
+                <tr>
+                    <th scope="row">
+                        {{ data.id }}
+                    </th>
+                    <td>
+                        {{ data.titulo }}
+                    </td>
+                    <td>
+                        {{ data.subtitulo }}
+                    </td>
+                    <td>
+                        {{ data.resumo }}
+                    </td>
+                    <td>
+                        {{ data.dataDocumento }}
+                    </td>
+                    <td>
+                        {{ data.dataPublicacao }}
+                    </td>
+                    <td>
+                        {{ data.status }}
+                    </td>
+                    <td>
+                        <a href="{{ path("web_documentoAcademico_show", { "id": data.id }) }}" class="btn btn-primary">
+                            Exibir
+                        </a>
+                        <a href="{{ path("web_documentoAcademico_edit", { "id": data.id }) }}" class="btn btn-warning">
+                            Editar
+                        </a>
+                        <a href="{{ path("web_documentoAcademico_delete", { "id": data.id }) }}" class="btn btn-danger" >
+                            Deletar
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
